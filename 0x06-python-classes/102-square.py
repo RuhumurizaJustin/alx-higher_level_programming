@@ -1,53 +1,23 @@
 #!/usr/bin/python3
-""" creates class Square """
+"""magic class definition"""
+import math
 
 
-class Square:
-    """ Square class"""
-    def __init__(self, size=0):
-        if type(size) != int and type(size) != float:
-            raise TypeError("size must be a number")
-        elif size < 0:
-            raise ValueError("size must be >= 0")
+class MagicClass:
+    """magicclass that makes same bytecode as in the task"""
+
+    def __init__(self, radius=0):
+        """Initialize class"""
+        self.__radius = 0
+        if type(radius) is not int and type(radius) is not float:
+            raise TypeError('radius must be a number')
         else:
-            self.__size = size
-
-    @property
-    def size(self):
-        return self.__size
-
-    @size.setter
-    def size(self, value):
-        if type(value) != int and type(value) != float:
-            raise TypeError("size must be a number")
-        elif value < 0:
-            raise ValueError("size must be >= 0")
-        else:
-            self.__size = value
+            self.__radius = radius
 
     def area(self):
-        return self.__size * self.__size
+        """area function calculates some weird stuff"""
+        return (self.__radius ** 2) * math.pi
 
-    def __eq__(self, other):
-        """check if equal to another square"""
-        return(self.area() == other.area())
-
-    def __lt__(self, other):
-        """check if less than other square"""
-        return(self.area() < other.area())
-
-    def __le__(self, other):
-        """check if less than or equal to other square"""
-        return(self.area() <= other.area())
-
-    def __ne__(self, other):
-        """check if not equal to another suqare"""
-        return(self.area() != other.area())
-
-    def __gt__(self, other):
-        """check if greater than another square"""
-        return(self.area() > other.area())
-
-    def __ge__(self, other):
-        """check if greater than or equal to another square"""
-        return(self.area() >= other.area())
+    def circumference(self):
+        """also this func calculate some weird stuff"""
+        return (2 * math.pi) * self.__radius
