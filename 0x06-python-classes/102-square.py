@@ -1,23 +1,22 @@
-#!/usr/bin/python3
-"""magic class definition"""
-import math
+class Square:
+    """defines class with instantiated and validated private instance attribute
+and public instance method."""
 
+    def __init__(self, size=0):
+        self.__size = size
 
-class MagicClass:
-    """magicclass that makes same bytecode as in the task"""
+    @property
+    def size(self):
+        return(self.__size)
 
-    def __init__(self, radius=0):
-        """Initialize class"""
-        self.__radius = 0
-        if type(radius) is not int and type(radius) is not float:
-            raise TypeError('radius must be a number')
-        else:
-            self.__radius = radius
+    @size.setter
+    def size(self, value):
+        if type(value) is not int:
+            raise TypeError("size must be an integer")
+        elif value < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = value
 
     def area(self):
-        """area function calculates some weird stuff"""
-        return (self.__radius ** 2) * math.pi
-
-    def circumference(self):
-        """also this func calculate some weird stuff"""
-        return (2 * math.pi) * self.__radius
+        """calculates and returns current square area"""
+        return(self.__size * self.__size)
