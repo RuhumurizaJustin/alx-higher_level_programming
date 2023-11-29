@@ -1,60 +1,58 @@
 #!/usr/bin/python3
+"""
+This is the "Rectangle"  module.
 
-'''module for shapes'''
+This module provides a Rectangle class.
+"""
 
 
 class Rectangle:
-    '''class for rectangle'''
-
+    """A Rectangle class with attributes width and height, and
+    methods area, perimeter, print, str, and repr.
+    """
     def __init__(self, width=0, height=0):
-        '''Initiation of object'''
         self.width = width
         self.height = height
 
     @property
     def width(self):
-        '''gets the width attr'''
         return self.__width
 
     @width.setter
     def width(self, value):
-        '''sets the width attr'''
         if type(value) is not int:
-            raise TypeError('width must be an integer')
+            raise TypeError("width must be an integer")
         if value < 0:
-            raise ValueError('width must be >= 0')
+            raise ValueError("width must be >= 0")
         self.__width = value
 
     @property
     def height(self):
-        '''gets the height attr'''
         return self.__height
 
     @height.setter
     def height(self, value):
-        '''sets the height attr'''
         if type(value) is not int:
-            raise TypeError('height must be an integer')
+            raise TypeError("height must be an integer")
         if value < 0:
-            raise ValueError('height must be >= 0')
+            raise ValueError("height must be >= 0")
         self.__height = value
 
-    def area(self):
-        '''returns the area of the rectangle'''
-        return self.__height * self.width
-
-    def perimeter(self):
-        '''return the perimeter of the rectangle'''
-        if self.__height == 0 or self.__width == 0:
-            return 0
-        return (self.__height * 2) + (self.__width * 2)
+    def __repr__(self):
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
 
     def __str__(self):
-        if self.__width == 0 or self.__height == 0:
-            return ''
-        else:
-            hashes = '#' * self.__width
-            return '\n'.join(hashes for h in range(self.__height))
+        total = ""
+        for i in range(self.__height):
+            total += ("#" * self.__width)
+            if i is not self.__height - 1:
+                total += "\n"
+        return total
 
-    def __repr__(self):
-        return("Rectangle({}, {})".format(self.width, self.height))
+    def area(self):
+        return self.__width * self.__height
+
+    def perimeter(self):
+        if self.__width is 0 or self.__height is 0:
+            return 0
+        return (2 * self.__width) + (2 * self.__height)
