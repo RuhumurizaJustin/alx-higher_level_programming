@@ -22,4 +22,8 @@ if __name__ == '__main__':
     rows_selected = db_cursor.fetchall()
 
     for row in rows_selected:
+<<<<<<< HEAD
         print(row)
+=======
+        print(row)
+>>>>>>> 57cbb8c6a440a31b92ef48077a4b2fe7a61055df
